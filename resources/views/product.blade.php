@@ -367,7 +367,7 @@
                                 </td>
                                 <td><span class="rating-stars">{{ str_repeat('⭐', (int)$priceInfo['rating']) }}</span> {{ $priceInfo['rating'] }}/5</td>
                                 <td style="text-align: center;">
-                                    <button type="button" class="btn-kosarba" onclick="addToCart({{ $product->id }})">Kosárba</button>
+                                    <button type="button" class="btn-kosarba" data-product-id="{{ $product->id }}" data-price="{{ $priceInfo['price'] }}" data-seller="{{ $priceInfo['seller'] }}" onclick="addToCart(event)">Kosárba</button>
                                 </td>
                             </tr>
                         @endforeach
@@ -448,15 +448,25 @@
         sidebar.classList.toggle('active');
     }
 
-    // Add to cart - simple and direct
-    function addToCart(productId) {
+    // Add to cart - with price and seller selection
+    function addToCart(event) {
+        event.preventDefault();
+        const button = event.target.closest('button');
+        const productId = button.getAttribute('data-product-id');
+        const price = button.getAttribute('data-price');
+        const seller = button.getAttribute('data-seller');
+
         fetch(`/cart/add/${productId}`, {
             method: 'POST',
             headers: {
                 'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
-            }
+            },
+            body: JSON.stringify({
+                price: price,
+                seller: seller
+            })
         })
         .then(response => response.json())
         .then(data => {

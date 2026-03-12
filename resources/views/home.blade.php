@@ -16,7 +16,7 @@
             transition: all 0.3s ease;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
             position: relative;
-            height: 700px;
+            height: 100%;
             display: flex;
             flex-direction: column;
         }
@@ -29,9 +29,10 @@
         
         .product-card .product-image {
             width: 100%;
-            height: 400px;
-            object-fit: cover;
+            height: auto;
+            object-fit: contain;
             transition: transform 0.3s ease;
+            background: #0a0a1a;
         }
         
         .product-card:hover .product-image {
@@ -39,7 +40,7 @@
         }
         
         .product-card .product-info {
-            padding: 30px;
+            padding: 20px;
             flex: 1;
             display: flex;
             flex-direction: column;
@@ -47,16 +48,16 @@
         
         .product-card h3 {
             color: #00ff99;
-            margin: 0 0 15px 0;
-            font-size: 1.5em;
-            line-height: 1.4;
+            margin: 0 0 10px 0;
+            font-size: 1.2em;
+            line-height: 1.3;
             min-height: auto;
         }
         
         .product-card .product-description {
             color: #cccccc;
-            font-size: 1.1em;
-            margin: 0 0 20px 0;
+            font-size: 0.9em;
+            margin: 0 0 15px 0;
             flex: 1;
         }
         
@@ -72,11 +73,11 @@
         .product-card .product-price {
             color: #00ff99;
             font-weight: bold;
-            font-size: 1.4em;
+            font-size: 1.2em;
         }
         
         .product-card .btn-add-cart {
-            padding: 12px 24px;
+            padding: 10px 15px;
             background: #00ff99;
             color: #000;
             border: none;
@@ -84,7 +85,7 @@
             cursor: pointer;
             font-weight: bold;
             transition: all 0.3s ease;
-            font-size: 1.1em;
+            font-size: 0.9em;
         }
         
         .product-card .btn-add-cart:hover {
@@ -147,7 +148,7 @@
         <div style="position: absolute; bottom: -30%; left: -5%; width: 500px; height: 500px; background: radial-gradient(circle, rgba(44, 30, 74, 0.3) 0%, transparent 70%); border-radius: 50%; z-index: 0;"></div>
         <div style="position: relative; z-index: 1; max-width: 900px; margin: 0 auto;">
             <h1 style="font-size: 3.5em; font-weight: 800; margin-bottom: 20px; background: linear-gradient(135deg, #00ff99 0%, #00ccff 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">A Legjobb Digitális Piactér</h1>
-            <p style="font-size: 1.4em; color: #cccccc; margin-bottom: 30px; line-height: 1.6;">Hasonlítsd össze az árakat, keress a legjobbat, és vásárolj garantáltan biztonságosan. 50+ termék, 1000+ ajánlat.</p>
+            <p style="font-size: 1.4em; color: #cccccc; margin-bottom: 30px; line-height: 1.6;">Hasonlítsd össze az árakat, keress a legjobbat, és vásárolj garantáltan biztonságosan. 100+ ajánlat.</p>
             <div style="display: flex; gap: 8px; flex-wrap: wrap; justify-content: center;">
                 <a href="{{ route('filter.show') }}" style="display: inline-block; padding: 12px 30px; font-size: 1.1em; background: linear-gradient(135deg, #00ff99, #00cc88); color: #000; text-decoration: none; border-radius: 8px; border: none; cursor: pointer; font-weight: bold; transition: all 0.3s ease; box-shadow: 0 4px 20px rgba(0, 255, 153, 0.3);">🔍 Vásárlás Megkezdése</a>
                 <a href="#featured" style="display: inline-block; padding: 12px 30px; font-size: 1.1em; background: transparent; color: #00ff99; text-decoration: none; border-radius: 8px; border: 2px solid #00ff99; cursor: pointer; font-weight: bold; transition: all 0.3s ease;">⬇️ Felfedezés</a>
@@ -161,7 +162,7 @@
     <!-- KÁRTYÁK -->
     <section class="cards-section" id="featured">
         <h2 style="font-size: 2.5em; margin-bottom: 20px; text-align: center;">🎮 Kiemelt Termékek</h2>
-        <div class="products-grid" style="grid-template-columns: repeat(3, 1fr); max-width: 1200px; margin: 0 auto;">
+        <div class="products-grid" style="grid-template-columns: repeat(4, 1fr); max-width: 1600px; margin: 0 auto;">
             @foreach($featured as $product)
                 @php
                     $prices = $product->prices;

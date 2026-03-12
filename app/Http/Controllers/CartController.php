@@ -26,7 +26,7 @@ class CartController extends Controller
 
         $cart = session()->get('cart', []);
         $seller = $request->input('seller', $products[$id]['prices'][0]['seller'] ?? 'Default');
-        $price = $request->input('price', $products[$id]['prices'][0]['price'] ?? $products[$id]['price'] ?? 0);
+        $price = (float) $request->input('price', $products[$id]['prices'][0]['price'] ?? $products[$id]['price'] ?? 0);
 
         $cartKey = $id . '_' . $seller; // Unique key per product and seller
 

@@ -69,9 +69,12 @@
 
         .products-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            grid-template-columns: repeat(4, 1fr);
             gap: 25px;
             margin-top: 30px;
+            max-width: 1600px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .empty-state {
@@ -112,7 +115,7 @@
             }
 
             .products-grid {
-                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             }
         }
     </style>

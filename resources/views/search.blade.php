@@ -71,7 +71,7 @@
         @if($products->isEmpty())
             <p>Nincs találat a keresésre.</p>
         @else
-            <div class="products-grid" style="grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 15px;">
+            <div class="products-grid" style="grid-template-columns: repeat(4, 1fr); max-width: 1600px; margin: 0 auto; gap: 15px;">
                 @foreach($products as $product)
                     @php
                         $prices = $product->prices;
@@ -169,7 +169,10 @@
                 const badge = document.getElementById('cart-badge');
                 badge.textContent = data.cart_count;
                 badge.style.display = 'inline';
-                badge.style.animation = 'badge-pulse 0.3s';
+                badge.style.animation = 'none';
+                setTimeout(() => {
+                    badge.style.animation = 'badge-pulse 0.3s ease-in-out';
+                }, 50);
             }
         })
         .catch(error => console.error('Error:', error));
