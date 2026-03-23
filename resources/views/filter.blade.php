@@ -193,7 +193,9 @@
                         $firstPrice = $prices[0]['price'] ?? 0;
                     @endphp
                     <div class="product-card" onclick="goToProduct({{ $product->id }})" style="cursor: pointer;">
-                        <img src="{{ asset($product->image) }}" alt="{{ $product->name }}" class="product-image">
+                        @if($product->image_url)
+                            <img src="{{ $product->image_url }}" alt="{{ $product->name }}" class="product-image">
+                        @endif
                         <div class="product-info">
                             <h3>{{ $product->name }}</h3>
                             <p class="product-description">{{ $product->platform }} - {{ $product->genre }}</p>

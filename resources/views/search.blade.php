@@ -81,7 +81,9 @@
                         $minPrice = min(array_column($prices, 'price'));
                     @endphp
                     <div class="product-card" style="cursor: pointer;" onclick="localStorage.setItem('lastSearchUrl', window.location.href); localStorage.removeItem('lastFilterUrl'); window.location.href='{{ route('product.show', $product->id) }}'">
-                        <img src="{{ asset($product->image) }}" alt="{{ $product->name }}" class="product-image">
+                        @if($product->image_url)
+                            <img src="{{ $product->image_url }}" alt="{{ $product->name }}" class="product-image">
+                        @endif
                         <div class="product-info">
                             <h3 style="font-size: 1.1em;">{{ $product->name }}</h3>
                             <p class="product-description">{{ $product->platform }}</p>

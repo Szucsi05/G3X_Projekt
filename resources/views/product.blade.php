@@ -307,7 +307,9 @@
         <div class="product-header">
             <!-- Kép -->
             <div class="product-image-section">
-                <img src="{{ asset($product->image) }}" alt="{{ $product->name }}">
+                @if($product->image_url)
+                    <img src="{{ $product->image_url }}" alt="{{ $product->name }}">
+                @endif
             </div>
 
             <!-- Termékinformáció -->
